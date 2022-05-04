@@ -1,0 +1,40 @@
+#+TITLE: cljstyle-mode
+
+Reformat a Clojure buffer using [[https://github.com/greglook/cljstyle][cljstyle]].
+
+* Installation
+
+  This package is so simple that you might as well just copy/paste it into your
+  Emacs initialization file.
+
+  But, if you like, here is an example of installing this package using
+  [[https://github.com/jwiegley/use-package][use-package]] and [[https://github.com/raxod502/straight.el][straight]]:
+
+  #+begin_src emacs-lisp
+    (use-package cljstyle
+      :after clojure-mode
+      :straight (cljstyle
+                 :type git
+                 :host github
+                 :repo "cfclrk/cljstyle.el"))
+
+    (use-package clojure-mode
+      :hook ((clojure-mode . cljstyle-format-on-save-mode)))
+  #+end_src
+
+* Configuration
+
+  - =cljstyle-format-on-save-mode=: A minor mode which, when enabled, can
+    automatically format Clojure files on save.
+
+* Usage
+
+  This package (well, really, the underlying [[https://github.com/purcell/emacs-reformatter][emacs-reformatter]] package) provides
+  two interactive functions:
+
+  - =cljstyle-format-buffer=
+  - =cljstyle-format-region=
+
+* See Also
+
+  - [[https://github.com/jstokes/cljstyle-mode][cljstyle-mode]]
