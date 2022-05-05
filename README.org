@@ -1,6 +1,6 @@
-#+TITLE: cljstyle-mode
+#+TITLE: cljstyle.el
 
-Reformat a Clojure buffer using [[https://github.com/greglook/cljstyle][cljstyle]].
+Reformat Clojure code using [[https://github.com/greglook/cljstyle][cljstyle]].
 
 * Installation
 
@@ -45,7 +45,9 @@ Reformat a Clojure buffer using [[https://github.com/greglook/cljstyle][cljstyle
     automatically format Clojure files on save. Enable it with something like:
 
     #+begin_src emacs-lisp
-      (add-hook 'clojure-mode-hook #'cljstyle-format-on-save-mode)
+      (add-hook
+       'clojure-mode-hook
+       #'cljstyle-format-on-save-mode)
     #+end_src
 
 * Usage
