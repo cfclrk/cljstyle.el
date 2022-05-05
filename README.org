@@ -21,19 +21,22 @@ Reformat a Clojure buffer using [[https://github.com/greglook/cljstyle][cljstyle
       :hook ((clojure-mode . cljstyle-format-on-save-mode)))
   #+end_src
 
-  Or, with =package.el=, something like this (question: is this how package.el
-  people install things?):
+  Or, with =package.el=, clone this repo somewhere and then do something like
+  this:
 
   #+begin_src emacs-lisp
     (unless (package-installed-p 'cljstyle)
       (package-install-file
-       "~/path/to/cljstyle.el/cljstyle.el")
-      (require 'cljstyle))
+       "~/path/to/cljstyle.el/cljstyle.el"))
+
+    (require 'cljstyle)
 
     (unless (package-installed-p 'clojure-mode)
       (package-install 'clojure-mode))
 
-    (add-hook 'clojure-mode-hook #'cljstyle-format-on-save-mode)
+    (add-hook
+     'clojure-mode-hook
+     #'cljstyle-format-on-save-mode)
   #+end_src
 
 * Configuration

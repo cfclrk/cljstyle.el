@@ -12,7 +12,7 @@
 (reformatter-define cljstyle-format
   :program "cljstyle"
   :args '("pipe")
-  :lighter " CljFmt")
+  :lighter " cljstyle")
 
 (provide 'cljstyle)
 ;;; cljstyle.el ends here
