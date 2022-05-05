@@ -27,7 +27,7 @@ Reformat a Clojure buffer using [[https://github.com/greglook/cljstyle][cljstyle
   #+begin_src emacs-lisp
     (unless (package-installed-p 'cljstyle)
       (package-install-file
-       "~/emacs/cfclrk/straight/repos/cljstyle.el/cljstyle.el")
+       "~/path/to/cljstyle.el/cljstyle.el")
       (require 'cljstyle))
 
     (unless (package-installed-p 'clojure-mode)
