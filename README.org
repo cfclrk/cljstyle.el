@@ -1,43 +1,46 @@
 #+TITLE: cljstyle.el
 
-Reformat Clojure code using [[https://github.com/greglook/cljstyle][cljstyle]].
+Format Clojure code using [[https://github.com/greglook/cljstyle][cljstyle]].
+
+Under the covers, this uses [[https://github.com/purcell/emacs-reformatter][emacs-reformatter]] to do all the heavy lifting.
 
 * Installation
 
-  This package is so simple that you could just copy/paste it into your Emacs
-  initialization file.
+** Example: package.el
 
-  Here is an example of installing this package using [[https://github.com/jwiegley/use-package][use-package]] and [[https://github.com/raxod502/straight.el][straight]]:
+   This package is not available in MELPA. First, clone this repository
+   somewhere locally. Then do something like this:
 
-  #+begin_src emacs-lisp
-    (use-package cljstyle
-      :after clojure-mode
-      :straight (cljstyle
-                 :type git
-                 :host github
-                 :repo "cfclrk/cljstyle.el"))
+   #+begin_src emacs-lisp
+     (unless (package-installed-p 'cljstyle)
+       (package-install-file
+        "~/path/to/cljstyle.el/cljstyle.el"))
 
-    (use-package clojure-mode
-      :hook ((clojure-mode . cljstyle-format-on-save-mode)))
-  #+end_src
+     (require 'cljstyle)
 
-  Or, with =package.el=, clone this repo somewhere and then do something like
-  this:
+     (unless (package-installed-p 'clojure-mode)
+       (package-install 'clojure-mode))
 
-  #+begin_src emacs-lisp
-    (unless (package-installed-p 'cljstyle)
-      (package-install-file
-       "~/path/to/cljstyle.el/cljstyle.el"))
+     (add-hook
+      'clojure-mode-hook
+      #'cljstyle-format-on-save-mode)
+   #+end_src
 
-    (require 'cljstyle)
+** Example: use-package and straight
 
-    (unless (package-installed-p 'clojure-mode)
-      (package-install 'clojure-mode))
+   Example using [[https://github.com/jwiegley/use-package][use-package]] and [[https://github.com/raxod502/straight.el][straight]]:
 
-    (add-hook
-     'clojure-mode-hook
-     #'cljstyle-format-on-save-mode)
-  #+end_src
+   #+begin_src emacs-lisp
+     (use-package cljstyle
+       :after clojure-mode
+       :straight (cljstyle
+                  :type git
+                  :host github
+                  :repo "cfclrk/cljstyle.el"))
+
+     (use-package clojure-mode
+       :hook ((clojure-mode . cljstyle-format-on-save-mode)))
+   #+end_src
 
 * Configuration
 
